@@ -69,8 +69,8 @@ public class GUI extends JFrame {
 		
 		JPanel BtnList = new JPanel();
 
-		BtnList.setBackground(new Color(57, 62, 70));
-		BtnList.setBounds(0, 160, 161, 27);
+		BtnList.setBackground(new Color(34, 40, 49));
+		BtnList.setBounds(0, 115, 161, 27);
 		VerticalPanel.add(BtnList);
 		BtnList.setLayout(new BoxLayout(BtnList, BoxLayout.X_AXIS));
 		
@@ -86,8 +86,8 @@ public class GUI extends JFrame {
 
 		JPanel BtnSongs = new JPanel();
 
-		BtnSongs.setBackground(new Color(57, 62, 70));
-		BtnSongs.setBounds(0, 187, 161, 27);
+		BtnSongs.setBackground(new Color(34, 40, 49));
+		BtnSongs.setBounds(0, 142, 161, 27);
 		VerticalPanel.add(BtnSongs);
 		BtnSongs.setLayout(new BoxLayout(BtnSongs, BoxLayout.X_AXIS));
 		
@@ -104,8 +104,8 @@ public class GUI extends JFrame {
 
 		JPanel BtnPlaylist = new JPanel();
 
-		BtnPlaylist.setBackground(new Color(57, 62, 70));
-		BtnPlaylist.setBounds(0, 214, 161, 27);
+		BtnPlaylist.setBackground(new Color(34, 40, 49));
+		BtnPlaylist.setBounds(0, 169, 161, 27);
 		VerticalPanel.add(BtnPlaylist);
 		BtnPlaylist.setLayout(new BoxLayout(BtnPlaylist, BoxLayout.X_AXIS));
 		
@@ -124,17 +124,14 @@ public class GUI extends JFrame {
 		InfoIcon.setBounds(0, 473, 26, 36);
 		VerticalPanel.add(InfoIcon);
 		
-		
-		JPanel Content = new JPanel();
-		Content.setBackground(new Color(57, 62, 70));
-		Content.setBounds(160, 0, 546, 509);
-		contentPane.add(Content);
-		Content.setLayout(null);
-		
 		JPanel ControlPanel = new JPanel();
 		ControlPanel.setBounds(0, 509, 706, 87);
 		contentPane.add(ControlPanel);
 		ControlPanel.setBackground(new Color(34, 40, 49));
+		
+		JPanel Content = new JPanel();
+		Content.setBounds(160, 0, 546, 509);
+		contentPane.add(Content);
 		
 		/*Buttons events*/
 		BtnList.addMouseListener(new MouseAdapter() {
@@ -142,9 +139,9 @@ public class GUI extends JFrame {
 			public void mouseExited(MouseEvent e) {ListaLabel.setForeground(new Color(0, 173, 181));}
 			public void mouseClicked(MouseEvent e) {
 				//Change colors
-				BtnList.setBackground(new Color(34, 40, 49));
-				BtnSongs.setBackground(new Color(57, 62, 70));
-				BtnPlaylist.setBackground(new Color(57, 62, 70));
+				BtnList.setBackground(new Color(57, 62, 70));
+				BtnSongs.setBackground(new Color(34, 40, 49));
+				BtnPlaylist.setBackground(new Color(34, 40, 49));
 				
 			}
 		});
@@ -155,9 +152,9 @@ public class GUI extends JFrame {
 			public void mouseExited(MouseEvent e) {SongsLabel.setForeground(new Color(0, 173, 181));}
 			public void mouseClicked(MouseEvent e) {
 				//change background
-				BtnList.setBackground(new Color(57, 62, 70));
-				BtnSongs.setBackground(new Color(34, 40, 49));
-				BtnPlaylist.setBackground(new Color(57, 62, 70));
+				BtnList.setBackground(new Color(34, 40, 49));
+				BtnSongs.setBackground(new Color(57, 62, 70));
+				BtnPlaylist.setBackground(new Color(34, 40, 49));
 			}
 		});
 		
@@ -167,9 +164,9 @@ public class GUI extends JFrame {
 			public void mouseExited(MouseEvent e) {PlaylistLabel.setForeground(new Color(0, 173, 181));}
 			public void mouseClicked(MouseEvent e) {
 				//change background
-				BtnPlaylist.setBackground(new Color(34, 40, 49));
-				BtnList.setBackground(new Color(57, 62, 70));
-				BtnSongs.setBackground(new Color(57, 62, 70));
+				BtnPlaylist.setBackground(new Color(57, 62, 70));
+				BtnList.setBackground(new Color(34, 40, 49));
+				BtnSongs.setBackground(new Color(34, 40, 49));
 			}
 		});
 		
@@ -180,8 +177,20 @@ public class GUI extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 			}
 		});
-		/*End Buttons events*/
-		
 
+		
+		changePanel(Content);		
+		
+	}
+	
+	public void changePanel(JPanel Content){
+		BienvenidaContent pageBienvenida = new BienvenidaContent();
+		pageBienvenida.setBounds(160, 0, 546, 509);
+		
+		Content.removeAll();
+		Content.add(pageBienvenida);
+		Content.revalidate();
+		Content.repaint();
+		
 	}
 }
