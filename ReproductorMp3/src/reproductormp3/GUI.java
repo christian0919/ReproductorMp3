@@ -17,11 +17,20 @@ import javax.swing.BoxLayout;
 import javax.swing.SwingConstants;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.Dimension;
 
 public class GUI extends JFrame {
 
 	private JPanel contentPane;
+	private JPanel Content;
+	private WelcomePage pageBienvenida = new WelcomePage();
+	private QueueGUI pageQueue=new QueueGUI();
+	private PlaylistPanel pagePlaylist=new PlaylistPanel();
+	private SongsPanel pageSongs=new SongsPanel();
 
+	
+	
+	
 	/**
 	 * Launch the application.
 	 */
@@ -42,6 +51,41 @@ public class GUI extends JFrame {
 	 * Create the frame.
 	 */
 	public GUI() {
+		initComponents();
+		changePanel(0);
+		
+	}
+	
+	private void changePanel(int nmPanel){
+		
+		Content.removeAll();
+		pageBienvenida.setBounds(0, 0, 546, 509);
+		pageBienvenida.setPreferredSize(new Dimension(546, 509));
+		Content.setLayout(null);
+		
+		switch(nmPanel){
+			case 0:
+				Content.add(pageBienvenida);
+				break;
+			case 1:
+				Content.add(pageQueue);
+				break;
+			case 2:
+				Content.add(pageSongs);
+				break;
+				
+			case 3:
+				Content.add(pagePlaylist);
+				break;
+		}
+		
+		
+		
+		Content.revalidate();
+		Content.repaint();
+	}
+	
+	private void initComponents() {
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(0, 0, 722, 635);
@@ -129,7 +173,9 @@ public class GUI extends JFrame {
 		contentPane.add(ControlPanel);
 		ControlPanel.setBackground(new Color(34, 40, 49));
 		
-		JPanel Content = new JPanel();
+		Content = new JPanel();
+		Content.setMinimumSize(new Dimension(546, 509));
+		Content.setBackground(Color.WHITE);
 		Content.setBounds(160, 0, 546, 509);
 		contentPane.add(Content);
 		
@@ -142,6 +188,8 @@ public class GUI extends JFrame {
 				BtnList.setBackground(new Color(57, 62, 70));
 				BtnSongs.setBackground(new Color(34, 40, 49));
 				BtnPlaylist.setBackground(new Color(34, 40, 49));
+				changePanel(1);
+				
 				
 			}
 		});
@@ -155,6 +203,7 @@ public class GUI extends JFrame {
 				BtnList.setBackground(new Color(34, 40, 49));
 				BtnSongs.setBackground(new Color(57, 62, 70));
 				BtnPlaylist.setBackground(new Color(34, 40, 49));
+				changePanel(2);
 			}
 		});
 		
@@ -167,6 +216,7 @@ public class GUI extends JFrame {
 				BtnPlaylist.setBackground(new Color(57, 62, 70));
 				BtnList.setBackground(new Color(34, 40, 49));
 				BtnSongs.setBackground(new Color(34, 40, 49));
+				changePanel(3);
 			}
 		});
 		
@@ -175,22 +225,9 @@ public class GUI extends JFrame {
 			public void mouseEntered(MouseEvent e) {InfoIcon.setIcon(new ImageIcon(GUI.class.getResource("/imgs/Pregunta2.png")));}
 			public void mouseExited(MouseEvent e) {InfoIcon.setIcon(new ImageIcon(GUI.class.getResource("/imgs/Pregunta1.png")));}
 			public void mouseClicked(MouseEvent e) {
+				changePanel(0);
 			}
 		});
-
-		
-		changePanel(Content);		
-		
-	}
-	
-	public void changePanel(JPanel Content){
-		//BienvenidaContent pageBienvenida = new BienvenidaContent();
-		//pageBienvenida.setBounds(160, 0, 546, 509);
-		
-		//Content.removeAll();
-		//Content.add(pageBienvenida);
-		//Content.revalidate();
-		//Content.repaint();
-		
-	}
+		/*End button events*/	
+	} 
 }
