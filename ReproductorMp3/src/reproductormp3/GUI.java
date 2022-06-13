@@ -184,13 +184,13 @@ public class GUI extends JFrame {
 	}
 	
 	public void changePanel(JPanel Content){
-		BienvenidaContent pageBienvenida = new BienvenidaContent();
-		pageBienvenida.setBounds(160, 0, 546, 509);
+		//BienvenidaContent pageBienvenida = new BienvenidaContent();
+		//pageBienvenida.setBounds(160, 0, 546, 509);
 		
-		Content.removeAll();
-		Content.add(pageBienvenida);
-		Content.revalidate();
-		Content.repaint();
+		//Content.removeAll();
+		//Content.add(pageBienvenida);
+		//Content.revalidate();
+		//Content.repaint();
 		
 	}
 }
