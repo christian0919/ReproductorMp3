@@ -9,10 +9,7 @@ import java.sql.Statement;
 public class DataBase {
 
 	private String url="jdbc:sqlite:src/dataBase/reproductor.db";
-	
-	public DataBase(){
-		
-	}
+
 	
 	private void errorConnection(SQLException e){
 		System.out.println("Error connection to SQLite database");
@@ -30,7 +27,7 @@ public class DataBase {
 			ResultSet result= statement.executeQuery(sql);
 			while(result.next()){
 				String name= result.getString("Nombre");
-				System.out.println("result: "+name);
+				System.out.println("Name: "+name);
 			}
 			connection.close();
 		}catch(SQLException e){
@@ -49,8 +46,8 @@ public class DataBase {
 			ResultSet result= statement.executeQuery(sql);
 			while(result.next()){
 				String playlist=result.getString("NamePlaylist");
-				String name= result.getString("Nombre");
-				System.out.println("result: "+name+"|| Playlist: "+ playlist);
+				String name= result.getString("NombreCancion");
+				System.out.println("Song: "+name+"|| Playlist: "+ playlist);
 			}
 			connection.close();
 		}catch(SQLException e){
