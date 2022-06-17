@@ -27,7 +27,7 @@ public class DataBase {
 			ResultSet result= statement.executeQuery(sql);
 			while(result.next()){
 				String name= result.getString("Nombre");
-				System.out.println("Name: "+name);
+				System.out.println("Name: "+name);//debugging
 			}
 			connection.close();
 		}catch(SQLException e){
@@ -47,7 +47,7 @@ public class DataBase {
 			while(result.next()){
 				String playlist=result.getString("NamePlaylist");
 				String name= result.getString("NombreCancion");
-				System.out.println("Song: "+name+"|| Playlist: "+ playlist);
+				System.out.println("Song: "+name+"|| Playlist: "+ playlist);//debugging
 			}
 			connection.close();
 		}catch(SQLException e){
@@ -67,7 +67,7 @@ public class DataBase {
 				String autor=result.getString("Autor");
 				String name= result.getString("NombreCancion");
 				String ruta=result.getString("Ruta");
-				System.out.println("result: "+name+"|| Ruta: "+ ruta + " || Autor: " + autor);
+				System.out.println("result: "+name+"|| Ruta: "+ ruta + " || Autor: " + autor);//debugging
 			}
 			connection.close();
 		}catch(SQLException e){
@@ -75,6 +75,21 @@ public class DataBase {
 		}
 	}
 	
+	public void clearQueue(){
+		try{
+			Connection connection = DriverManager.getConnection(url);
+			String sql="DELETE FROM Queue";
+		
+			Statement statement = connection.createStatement();
+			statement.execute(sql);
+
+				System.out.println("Table Queue Cleared");//debugging
+			
+			connection.close();
+		}catch(SQLException e){
+		 errorConnection(e);
+		}
+	}
 	
 	
 }
