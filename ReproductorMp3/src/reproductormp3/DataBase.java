@@ -20,7 +20,7 @@ public class DataBase {
 		 * 
 		 * 
 		*/
-		String url="jdbc:sqlite:dataBase\\reproductor.db";
+		String url="jdbc:sqlite:src/dataBase/reproductor.db";
 		try {
 			Connection connection = DriverManager.getConnection(url);
 			String sql="SELECT * FROM Queue";
