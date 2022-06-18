@@ -75,21 +75,23 @@ public class DataBase {
 		}
 	}
 	
-	public void clearQueue(){
+	public void clearTable(String tableName){//Queue|Songs|Playlists
 		try{
 			Connection connection = DriverManager.getConnection(url);
-			String sql="DELETE FROM Queue";
+			String sql="DELETE FROM "+tableName;
 		
 			Statement statement = connection.createStatement();
 			statement.execute(sql);
 
-				System.out.println("Table Queue Cleared");//debugging
+				System.out.println("Table "+tableName+" Cleared");//debugging
 			
 			connection.close();
 		}catch(SQLException e){
 		 errorConnection(e);
 		}
 	}
+	
+	
 	
 	
 }
