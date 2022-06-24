@@ -12,6 +12,8 @@ import javax.swing.UIManager;
 import javax.swing.JLayeredPane;
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
+
 import java.awt.Font;
 import javax.swing.BoxLayout;
 import javax.swing.SwingConstants;
@@ -27,6 +29,7 @@ public class GUI extends JFrame {
 	private QueueGUI pageQueue=new QueueGUI();
 	private PlaylistPanel pagePlaylist=new PlaylistPanel();
 	private SongsPanel pageSongs=new SongsPanel();
+	public JFileChooser SelectDyrectory = new JFileChooser();
 
 	
 	
@@ -59,8 +62,6 @@ public class GUI extends JFrame {
 	private void changePanel(int nmPanel){
 		
 		Content.removeAll();
-		pageBienvenida.setBounds(0, 0, 546, 509);
-		pageBienvenida.setPreferredSize(new Dimension(546, 509));
 		Content.setLayout(null);
 		
 		switch(nmPanel){
@@ -99,6 +100,9 @@ public class GUI extends JFrame {
 		VerticalPanel.setBackground(new Color(34, 40, 49));
 		contentPane.add(VerticalPanel);
 		VerticalPanel.setLayout(null);
+		
+		SelectDyrectory.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+		
 		
 		JLabel Disco = new JLabel("");
 		Disco.setIcon(new ImageIcon(GUI.class.getResource("/imgs/Disc.png")));
@@ -145,6 +149,8 @@ public class GUI extends JFrame {
 		SongsLabel.setFont(new Font("Roboto", Font.PLAIN, 15));
 		BtnSongs.add(SongsLabel);
 		
+		pageBienvenida.setBounds(0, 0, 546, 509);
+		pageBienvenida.setPreferredSize(new Dimension(546, 509));
 
 		JPanel BtnPlaylist = new JPanel();
 
@@ -225,6 +231,9 @@ public class GUI extends JFrame {
 			public void mouseEntered(MouseEvent e) {InfoIcon.setIcon(new ImageIcon(GUI.class.getResource("/imgs/Pregunta2.png")));}
 			public void mouseExited(MouseEvent e) {InfoIcon.setIcon(new ImageIcon(GUI.class.getResource("/imgs/Pregunta1.png")));}
 			public void mouseClicked(MouseEvent e) {
+				BtnPlaylist.setBackground(new Color(34, 40, 49));
+				BtnList.setBackground(new Color(34, 40, 49));
+				BtnSongs.setBackground(new Color(34, 40, 49));
 				changePanel(0);
 			}
 		});
