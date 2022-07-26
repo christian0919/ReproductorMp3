@@ -39,7 +39,7 @@ public class SongsPanel extends JPanel {
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBorder(null);
 		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-		scrollPane.setBounds(10, 96, 526, 364);
+		scrollPane.setBounds(10, 96, 526, 402);
 		scrollPane.getViewport().setBackground(new Color(57, 62, 70));
 		add(scrollPane);
 
