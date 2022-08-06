@@ -1,15 +1,12 @@
 package reproductormp3;
 
-import java.awt.BorderLayout;
+
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
 import java.awt.Color;
-import javax.swing.border.BevelBorder;
-import javax.swing.UIManager;
-import javax.swing.JLayeredPane;
+
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
@@ -20,6 +17,15 @@ import javax.swing.SwingConstants;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.Dimension;
+import java.awt.Toolkit;
+import java.awt.Window.Type;
+import java.awt.Dialog.ModalExclusionType;
+import java.awt.BorderLayout;
+import java.awt.Label;
+import java.awt.GridBagLayout;
+import java.awt.GridBagConstraints;
+import java.awt.GridLayout;
+import java.awt.Insets;
 
 public class GUI extends JFrame {
 
@@ -54,8 +60,12 @@ public class GUI extends JFrame {
 	 * Create the frame.
 	 */
 	public GUI() {
+		setTitle("Muplij");
+		setIconImage(Toolkit.getDefaultToolkit().getImage(GUI.class.getResource("/imgs/Pause.png")));
 		initComponents();
 		changePanel(0);
+		setUndecorated(true);
+
 		
 	}
 	
@@ -87,38 +97,39 @@ public class GUI extends JFrame {
 	}
 	
 	private void initComponents() {
+
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(0, 0, 722, 635);
+		setBounds(0, 0, 704, 619);
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.WHITE);
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		this.setLocationRelativeTo(contentPane);
 		JPanel VerticalPanel = new JPanel();
-		VerticalPanel.setBounds(0, 0, 160, 509);
+		VerticalPanel.setBounds(0, 0, 160, 533);
 		VerticalPanel.setBackground(new Color(34, 40, 49));
 		contentPane.add(VerticalPanel);
-		VerticalPanel.setLayout(null);
 		
 		SelectDyrectory.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+		VerticalPanel.setLayout(null);
 		
 		
 		JLabel Disco = new JLabel("");
-		Disco.setIcon(new ImageIcon(GUI.class.getResource("/imgs/Disc.png")));
 		Disco.setBounds(12, 12, 48, 48);
+		Disco.setIcon(new ImageIcon(GUI.class.getResource("/imgs/Disc.png")));
 		VerticalPanel.add(Disco);
 		
 		JLabel TituloLabel = new JLabel("Muplij");
+		TituloLabel.setBounds(63, 25, 77, 27);
 		TituloLabel.setForeground(new Color(0, 173, 181));
 		TituloLabel.setFont(new Font("Roboto", Font.PLAIN, 25));
-		TituloLabel.setBounds(63, 25, 77, 27);
 		VerticalPanel.add(TituloLabel);
 		
 		JPanel BtnList = new JPanel();
+		BtnList.setBounds(0, 115, 161, 27);
 
 		BtnList.setBackground(new Color(34, 40, 49));
-		BtnList.setBounds(0, 115, 161, 27);
 		VerticalPanel.add(BtnList);
 		BtnList.setLayout(new BoxLayout(BtnList, BoxLayout.X_AXIS));
 		
@@ -133,9 +144,9 @@ public class GUI extends JFrame {
 		BtnList.add(ListaLabel);
 
 		JPanel BtnSongs = new JPanel();
+		BtnSongs.setBounds(0, 142, 161, 27);
 
 		BtnSongs.setBackground(new Color(34, 40, 49));
-		BtnSongs.setBounds(0, 142, 161, 27);
 		VerticalPanel.add(BtnSongs);
 		BtnSongs.setLayout(new BoxLayout(BtnSongs, BoxLayout.X_AXIS));
 		
@@ -153,9 +164,9 @@ public class GUI extends JFrame {
 		pageBienvenida.setPreferredSize(new Dimension(546, 509));
 
 		JPanel BtnPlaylist = new JPanel();
+		BtnPlaylist.setBounds(0, 169, 161, 27);
 
 		BtnPlaylist.setBackground(new Color(34, 40, 49));
-		BtnPlaylist.setBounds(0, 169, 161, 27);
 		VerticalPanel.add(BtnPlaylist);
 		BtnPlaylist.setLayout(new BoxLayout(BtnPlaylist, BoxLayout.X_AXIS));
 		
@@ -170,22 +181,50 @@ public class GUI extends JFrame {
 		BtnPlaylist.add(PlaylistLabel);
 		
 		JLabel InfoIcon = new JLabel("");
-		InfoIcon.setIcon(new ImageIcon(GUI.class.getResource("/imgs/Pregunta1.png")));
 		InfoIcon.setBounds(0, 473, 26, 36);
+		InfoIcon.setIcon(new ImageIcon(GUI.class.getResource("/imgs/Pregunta1.png")));
 		VerticalPanel.add(InfoIcon);
 		
 		JPanel ControlPanel = new JPanel();
-		ControlPanel.setBounds(0, 509, 706, 87);
+		ControlPanel.setBounds(0, 532, 706, 87);
 		contentPane.add(ControlPanel);
 		ControlPanel.setBackground(new Color(34, 40, 49));
 		
 		Content = new JPanel();
 		Content.setMinimumSize(new Dimension(546, 509));
 		Content.setBackground(Color.WHITE);
-		Content.setBounds(160, 0, 546, 509);
+		Content.setBounds(160, 24, 546, 509);
 		contentPane.add(Content);
 		
+		JPanel bar = new JPanel();
+		bar.setBounds(160, 0, 544, 24);
+		bar.setBackground(new Color(34, 40, 49));
+		contentPane.add(bar);
+		bar.setLayout(null);
+		
+		JLabel MinimazeBTN = new JLabel();
+		MinimazeBTN.setBounds(476, 0, 24, 24);
+		MinimazeBTN.setIcon(new ImageIcon(GUI.class.getResource("/imgs/imgminimizar1.png")));
+		bar.add(MinimazeBTN);
+		
+		JLabel ExitBTN = new JLabel("");
+
+		ExitBTN.setBounds(510, 0, 24, 24);
+		ExitBTN.setIcon(new ImageIcon(GUI.class.getResource("/imgs/imgexit1.png")));
+		bar.add(ExitBTN);
+		
 		/*Buttons events*/
+		
+		ExitBTN.addMouseListener(new MouseAdapter() {
+			public void mouseEntered(MouseEvent e) {ExitBTN.setIcon(new ImageIcon(GUI.class.getResource("/imgs/imgexit2.png")));}
+			public void mouseExited(MouseEvent e) {ExitBTN.setIcon(new ImageIcon(GUI.class.getResource("/imgs/imgexit1.png")));			}
+			public void mouseClicked(MouseEvent e) {System.exit(1);}
+		});
+		MinimazeBTN.addMouseListener(new MouseAdapter() {
+			public void mouseEntered(MouseEvent e) {MinimazeBTN.setIcon(new ImageIcon(GUI.class.getResource("/imgs/imgminimizar2.png")));}
+			public void mouseExited(MouseEvent e) {MinimazeBTN.setIcon(new ImageIcon(GUI.class.getResource("/imgs/imgminimizar1.png")));			}
+			//public void mouseClicked(MouseEvent e) {this.setExtendedState(ICONIFIED); }
+		});
 		BtnList.addMouseListener(new MouseAdapter() {
 			public void mouseEntered(MouseEvent e) {ListaLabel.setForeground(new Color(0, 255, 245));}
 			public void mouseExited(MouseEvent e) {ListaLabel.setForeground(new Color(0, 173, 181));}
@@ -195,8 +234,6 @@ public class GUI extends JFrame {
 				BtnSongs.setBackground(new Color(34, 40, 49));
 				BtnPlaylist.setBackground(new Color(34, 40, 49));
 				changePanel(1);
-				
-				
 			}
 		});
 		

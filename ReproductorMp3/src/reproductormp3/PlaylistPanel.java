@@ -12,6 +12,7 @@ import javax.swing.ScrollPaneConstants;
 import Lista.List;
 
 public class PlaylistPanel extends JPanel {
+
 	private List PlaylistList = new List();
 	private List SongsList = new List();
 

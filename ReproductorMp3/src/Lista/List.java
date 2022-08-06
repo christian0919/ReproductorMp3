@@ -2,7 +2,6 @@ package Lista;
 import java.awt.Color;
 import java.awt.Font;
 
-import javax.swing.BorderFactory;
 import javax.swing.DefaultListModel;
 import javax.swing.JList;
 import javax.swing.ListSelectionModel;
@@ -10,6 +9,10 @@ import javax.swing.border.LineBorder;
 
 public class List extends JList{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -5004172518197967489L;
 	public DefaultListModel model= new DefaultListModel();
 
 	public List() {
