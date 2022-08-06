@@ -36,7 +36,7 @@ public class GUI extends JFrame {
 	private PlaylistPanel pagePlaylist=new PlaylistPanel();
 	private SongsPanel pageSongs=new SongsPanel();
 	public JFileChooser SelectDyrectory = new JFileChooser();
-
+	private static GUI frame = new GUI();
 	
 	
 	
@@ -47,7 +47,7 @@ public class GUI extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					GUI frame = new GUI();
+					
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -207,7 +207,7 @@ public class GUI extends JFrame {
 		MinimazeBTN.setIcon(new ImageIcon(GUI.class.getResource("/imgs/imgminimizar1.png")));
 		bar.add(MinimazeBTN);
 		
-		JLabel ExitBTN = new JLabel("");
+		JLabel ExitBTN = new JLabel();
 
 		ExitBTN.setBounds(510, 0, 24, 24);
 		ExitBTN.setIcon(new ImageIcon(GUI.class.getResource("/imgs/imgexit1.png")));
@@ -223,7 +223,7 @@ public class GUI extends JFrame {
 		MinimazeBTN.addMouseListener(new MouseAdapter() {
 			public void mouseEntered(MouseEvent e) {MinimazeBTN.setIcon(new ImageIcon(GUI.class.getResource("/imgs/imgminimizar2.png")));}
 			public void mouseExited(MouseEvent e) {MinimazeBTN.setIcon(new ImageIcon(GUI.class.getResource("/imgs/imgminimizar1.png")));			}
-			//public void mouseClicked(MouseEvent e) {this.setExtendedState(ICONIFIED); }
+			public void mouseClicked(MouseEvent e) {frame.setExtendedState(JFrame.ICONIFIED);; }
 		});
 		BtnList.addMouseListener(new MouseAdapter() {
 			public void mouseEntered(MouseEvent e) {ListaLabel.setForeground(new Color(0, 255, 245));}
